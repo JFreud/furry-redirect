@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session, redirect, url_for
+from flask import Flask, render_template, request, session, redirect, url_for, flash
 import os
 
 echo_app = Flask(__name__)
@@ -18,7 +18,8 @@ def root():
         #if it exists, but the login is wrong, then display error message:
         else:
             session.clear()
-            return render_template('base.html', error = "Incorrect username or password")
+            flash ("INCORRECT USERNAME OR PASSWORD!")
+            return render_template('base.html')
     #session doesn't exist yet:
     except KeyError:
         return render_template('base.html')

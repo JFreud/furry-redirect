@@ -4,8 +4,11 @@
       <title> Home </title>
   </head>
   <body>
+    {% set messages = get_flashed_messages() %}
+    {% for message in messages %}
+    <center><h4> <font color = "red"> {{message}} </font></h4></center>
+    {% endfor %}
     <center>
-      <h4> <font color = "red"> {{error}} </font> </h4>
       <form method = "POST" action = "/welcome/">
         <b> Input your user </b>
         <input type = "text" name = "username"> <br>
